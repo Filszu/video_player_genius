@@ -1,0 +1,66 @@
+
+
+body{
+    /* background-color: red; */
+}
+
+#menu-container{
+    display: block;
+    position: fixed;
+    top: 25px;
+    right: 25px;
+    font-size: 25px;
+    /* background-color: gray; */
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+    
+}
+
+
+#menu_icon{
+    
+    background-color: rgb(0, 181, 114, 0.75);
+    padding: 15px 35px;
+    margin: 0 55px;
+    border-radius: 15px;
+    color: white;
+    
+    
+    cursor: pointer;
+}
+
+#menu-container:hover #menuOptions{
+    display:block;
+
+}
+
+#menu-container:hover #menu_icon{
+    border-radius: 25px 25px 0 0;
+
+}
+
+#menuOptions{
+    background-color: rgb(0, 211, 114, 0.75);
+    padding: 15px 25px;
+    margin: 0 5px;
+    border-radius: 15px;
+    color: white;
+    display: none;
+
+
+}
+
+
+.specialFont{
+    color:rgb(255, 251, 0);
+}
+
+
+.controls{
+    display: flex;
+    justify-content: center;
+    
+}
+.controls div{
+    cursor: pointer;
+}
