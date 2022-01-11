@@ -1,108 +1,139 @@
 const body = document.querySelector("body");
 //FIND VIDEO
 
+
 var video_players;
-video_players=document.querySelectorAll('video');
+    
 
 //detected videoplayers
-let videos_no=video_players.length;
-console.log(video_players);
-console.log(video_players[0]);
+let videos_no;
 
 
 
+try{
 
-// try{
+    video_players=document.querySelectorAll('video');
 
-// }catch(err){
-//     console.log(err);
-// }
+    //detected videoplayers
+    videos_no=video_players.length;
+    console.log(video_players);
+    console.log(video_players[0]);
 
-
-
-
-
-
-
-
-
-
-//PANEL
-
-
-
-
-
-const el = document.createElement("div");
-const menu = el;
-menu.innerHTML = `
-<div id="menu-container">
-    <div id="menu_icon">⚙CIAC.me V-speeder</div>
-
-
-    <div id="menuOptions">
-        ⏱video speed: <span id="v_speed_info">1</span>
-        <input type="range" id="speed_control" name="speed_control"" 
-        min="0.1" max="16" value="1" step="0.1" style="width: 100%;">
-
-        <div>🎬Detected: <span class="specialFont">${videos_no}</span> video-players</div>
-
-        <div class="controls">
-        <div onclick="controls(1)">▶</div>
-        
-        <div onclick="controls(0)">II</div>
-        </div>
-         <!--⬜▶👣⬛💱🔄⏸⏺⏹-->
-
+    if(videos_no<=0){
        
-    </div>
-
-    
-
-    
-    `;
-
-
-body.append(menu);
-
-const menu_icon = document.querySelector("#menu_icon");
-const menu_options = document.querySelector("#menuOptions");
-const v_control = document.querySelector('#speed_control');
-const v_info = document.querySelector('#v_speed_info');
-
-
-//show
-menu_icon.addEventListener('mouseover', function(){   
-});
-
-//hide
-menu_options.addEventListener('mouseleave', function(){
-});
-
-
-
-
-
-v_control.addEventListener("change", function(){
-
-    const v_speed =v_control.value;
-    v_info.innerHTML = v_speed;
-
-    for( v_num in video_players)
-    {
-        // video_players[v_num].style.display="none";
-
-        // video_players[v_num].defaultPlaybackRate = 1.0;
-        // video_players[v_num].play();
-        video_players[v_num].playbackRate = v_speed;
+        console.log('%c[⚙vpGenius]', 'color: green; ',`Video hasn't been founded`);
+        console.log("to refresh, type 'setup()' in the console");
     }
-
+    else{
+        setup();
+    }
+}catch(err){
+    console.log('%c[⚙vpGenius]', 'color: green; ',`Video hasn't been founded`);
+    console.log(err);
     
-});
+}
+
+
+
+
+
+
+
+function setup(){
+    console.log('%c------------⚙vpGenius------------', 'color: green; ');
+    //PANEL
+    
+    const el = document.createElement("div");
+    const menu = el;
+    menu.innerHTML = `
+    <div id="menu-container">
+        <div id="menu_icon">⚙vpGenius🎬
+        <div class="title_desc">powered by: <a href="https://ciac.me">CIAC.me V-speeder</a></div>
+        </div>
+
+
+        <div id="menuOptions">
+            ⏱video speed: <span id="v_speed_info">1</span>
+            <input type="range" id="speed_control" name="speed_control"" 
+            min="0.1" max="16" value="1" step="0.1" style="width: 100%;">
+
+            <div>🎬Detected: <span class="specialFont">${videos_no}</span> video-players</div>
+
+            <div class="controls">
+            <div onclick="controls(1)">▶</div>
+            
+            <div onclick="controls(0)">II</div>
+            </div>
+            <!--⬜▶👣⬛💱🔄⏸⏺⏹-->
+
+        
+        </div>
+
+        
+
+        
+        `;
+
+
+    body.append(menu);
+
+    const menu_icon = document.querySelector("#menu_icon");
+    const menu_options = document.querySelector("#menuOptions");
+    const v_control = document.querySelector('#speed_control');
+    const v_info = document.querySelector('#v_speed_info');
+
+
+    //show
+    menu_icon.addEventListener('mouseover', function(){   
+    });
+
+    //hide
+    menu_options.addEventListener('mouseleave', function(){
+    });
+
+
+
+
+
+    v_control.addEventListener("change", function(){
+
+        const v_speed =v_control.value;
+        v_info.innerHTML = v_speed;
+
+        for( v_num in video_players)
+        {
+            // video_players[v_num].style.display="none";
+
+            // video_players[v_num].defaultPlaybackRate = 1.0;
+            // video_players[v_num].play();
+            video_players[v_num].playbackRate = v_speed;
+        }
+
+        
+    });
+
+
+
+
+
+
+
+    // ADD STYLES
+    // Get HTML head element
+    const head = document.getElementsByTagName('HEAD')[0]; 
+    // Create new link Element
+    const link = document.createElement('link');
+    // set the attributes for link element 
+    link.rel = 'stylesheet'; 
+    link.type = 'text/css';
+    link.href = 'style.css'; 
+    // Append link element to HTML head
+    head.appendChild(link); 
+}
 
 function controls(action){
 
-    
+        
     switch (action){
         case 1:
             for(let i=0; i<videos_no; i++){
@@ -119,18 +150,3 @@ function controls(action){
 }
 
 
-
-
-
-
-// ADD STYLES
- // Get HTML head element
- const head = document.getElementsByTagName('HEAD')[0]; 
- // Create new link Element
- const link = document.createElement('link');
- // set the attributes for link element 
- link.rel = 'stylesheet'; 
- link.type = 'text/css';
- link.href = 'style.css'; 
- // Append link element to HTML head
- head.appendChild(link); 
