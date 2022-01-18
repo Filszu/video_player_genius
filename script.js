@@ -1,37 +1,42 @@
-const body = document.querySelector("body");
-//FIND VIDEO
-
-
-var video_players;
-    
-
+var body;
+var video_players;  
 //detected videoplayers
 let videos_no;
 
 
+window.addEventListener("load", function(){
+    body = document.querySelector("body");
+    //FIND VIDEO
 
-try{
+    try{
 
-    video_players=document.querySelectorAll('video');
-
-    //detected videoplayers
-    videos_no=video_players.length;
-    console.log(video_players);
-    console.log(video_players[0]);
-
-    if(videos_no<=0){
-       
-        console.log('%c[⚙vpGenius]', 'color: green; ',`Video hasn't been founded`);
-        console.log("to refresh, type 'setup()' in the console");
-    }
-    else{
-        setup();
-    }
-}catch(err){
-    console.log('%c[⚙vpGenius]', 'color: green; ',`Video hasn't been founded`);
-    console.log(err);
+        video_players=document.querySelectorAll('video');
     
-}
+        //detected videoplayers
+        videos_no=video_players.length;
+        console.log(video_players);
+        console.log(video_players[0]);
+    
+        if(videos_no<=0){
+           
+            console.log('%c[⚙vpGenius]', 'color: green; ',`Video hasn't been founded`);
+            console.log("to refresh, type 'setup()' in the console");
+        }
+        else{
+            setup();
+        }
+    }catch(err){
+        console.log('%c[⚙vpGenius]', 'color: green; ',`Video hasn't been founded`);
+        console.log(err);
+        
+    }
+    
+})
+
+
+
+
+
 
 
 
@@ -100,7 +105,7 @@ function setup(){
         const v_speed =v_control.value;
         v_info.innerHTML = v_speed;
 
-        for( v_num in video_players)
+        for( let v_num in video_players)
         {
             // video_players[v_num].style.display="none";
 

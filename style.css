@@ -14,6 +14,7 @@ body{
     font-family: 'Open Sans', sans-serif;
     font-weight: bold;
     transition: all 1,5s ease-in-out;
+    z-index:30;
     
 }
 
@@ -52,6 +53,7 @@ body{
     border-radius: 15px;
     color: white;
     display: none;
+    z-index:31;
 
 
 }
@@ -76,7 +78,7 @@ body{
     display: none;
 }
 
-a{
+#menu-container a{
     color: white;
     text-decoration: none;
 }
