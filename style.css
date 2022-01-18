@@ -14,7 +14,7 @@ body{
     font-family: 'Open Sans', sans-serif;
     font-weight: bold;
     transition: all 1,5s ease-in-out;
-    z-index:30;
+    z-index:9999;
     
 }
 
@@ -53,7 +53,6 @@ body{
     border-radius: 15px;
     color: white;
     display: none;
-    z-index:31;
 
 
 }
@@ -71,6 +70,7 @@ body{
 }
 .controls div{
     cursor: pointer;
+    padding: 5px;
 }
 
 .title_desc{
@@ -81,4 +81,14 @@ body{
 #menu-container a{
     color: white;
     text-decoration: none;
+}
+
+#menu-container a:hover{
+    color: rgb(255, 251, 0);
+    
+}
+
+
+#operations{
+    display:none;
 }

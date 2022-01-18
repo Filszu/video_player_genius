@@ -64,12 +64,27 @@ function setup(){
 
             <div>🎬Detected: <span class="specialFont">${videos_no}</span> video-players</div>
 
-            <div class="controls">
-            <div onclick="controls(1)">▶</div>
             
-            <div onclick="controls(0)">II</div>
+
+            <div class="controls">
+                <div onclick="controls(1)">▶</div>
+                
+                <div onclick="controls(0)">II</div>
             </div>
+
+            <div class="controls" onclick='show("#operations")'>
+                <div>open↗ </div> / <div> download⬇</div>
+                
+            </div>
+            <div id="operations">videos: </div>
+            
+
+            
             <!--⬜▶👣⬛💱🔄⏸⏺⏹-->
+
+
+
+            
 
         
         </div>
@@ -86,6 +101,7 @@ function setup(){
     const menu_options = document.querySelector("#menuOptions");
     const v_control = document.querySelector('#speed_control');
     const v_info = document.querySelector('#v_speed_info');
+    const operations = document.querySelector('#operations');
 
 
     //show
@@ -154,4 +170,32 @@ function controls(action){
 
 }
 
+function show(arg){
+    document.querySelector(arg).style.display="block";
+
+
+
+    //DOWNLOAD or open
+    if(arg=="#operations"){
+        
+        let nContent='';
+
+        for(let i=0; i<videos_no; i++){
+            let file_name = video_players[i].currentSrc;
+
+
+           
+            // nContent+=`<div>video${i} (src="${file_name}")</div>`;
+            nContent+=`<div>
+            video ${i}: 
+         
+                <a href="${file_name}" target="blank">open↗</a>`
+
+        }
+            
+        
+        operations.innerHTML=nContent;
+    }
+    
+}
 
