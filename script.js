@@ -1,3 +1,4 @@
+console.log('%c------------⚙vpGenius------------', 'color: green; ');
 var body;
 var video_players;  
 //detected videoplayers
@@ -72,11 +73,13 @@ function setup(){
                 <div onclick="controls(0)">II</div>
             </div>
 
-            <div class="controls" onclick='show("#operations")'>
-                <div>open↗ </div> / <div> download⬇</div>
+            <div id="operations-con">
+                <div class="controls" ><div>open↗ </div> / <div> download⬇</div></div>
+                <div id="operations">videos: </div>
+                
                 
             </div>
-            <div id="operations">videos: </div>
+            
             
 
             
@@ -93,6 +96,8 @@ function setup(){
 
         
         `;
+        
+   
 
 
     body.append(menu);
@@ -102,19 +107,11 @@ function setup(){
     const v_control = document.querySelector('#speed_control');
     const v_info = document.querySelector('#v_speed_info');
     const operations = document.querySelector('#operations');
-
-
-    //show
-    menu_icon.addEventListener('mouseover', function(){   
-    });
-
-    //hide
-    menu_options.addEventListener('mouseleave', function(){
-    });
+   
 
 
 
-
+//change speed
 
     v_control.addEventListener("change", function(){
 
@@ -136,20 +133,27 @@ function setup(){
 
 
 
+    //edit div
+    //DOWNLOAD or open option
+        
+    let nContent='';
+
+    for(let i=0; i<videos_no; i++){
+        let file_name = video_players[i].currentSrc;
 
 
+       
+        // nContent+=`<div>video${i} (src="${file_name}")</div>`;
+        nContent+=`<div>
+        video ${i}: 
+     
+            <a href="${file_name}" target="blank" title="open: ${file_name}">open↗</a>`
 
-    // ADD STYLES
-    // Get HTML head element
-    const head = document.getElementsByTagName('HEAD')[0]; 
-    // Create new link Element
-    const link = document.createElement('link');
-    // set the attributes for link element 
-    link.rel = 'stylesheet'; 
-    link.type = 'text/css';
-    link.href = 'style.css'; 
-    // Append link element to HTML head
-    head.appendChild(link); 
+    }
+        
+    
+    operations.innerHTML=nContent;
+
 }
 
 function controls(action){
@@ -170,32 +174,14 @@ function controls(action){
 
 }
 
-function show(arg){
-    document.querySelector(arg).style.display="block";
-
-
-
-    //DOWNLOAD or open
-    if(arg=="#operations"){
-        
-        let nContent='';
-
-        for(let i=0; i<videos_no; i++){
-            let file_name = video_players[i].currentSrc;
-
-
-           
-            // nContent+=`<div>video${i} (src="${file_name}")</div>`;
-            nContent+=`<div>
-            video ${i}: 
-         
-                <a href="${file_name}" target="blank">open↗</a>`
-
-        }
-            
-        
-        operations.innerHTML=nContent;
-    }
-    
-}
-
+// ADD STYLES
+    // Get HTML head element
+    const head = document.getElementsByTagName('HEAD')[0]; 
+    // Create new link Element
+    const link = document.createElement('link');
+    // set the attributes for link element 
+    link.rel = 'stylesheet'; 
+    link.type = 'text/css';
+    link.href = 'style.css'; 
+    // Append link element to HTML head
+    head.appendChild(link); 

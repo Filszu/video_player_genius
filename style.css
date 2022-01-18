@@ -89,6 +89,9 @@ body{
 }
 
 
+#operations-con:hover #operations{
+    display:block;
+}
 #operations{
     display:none;
 }
