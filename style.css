@@ -4,7 +4,7 @@ body{
     /* background-color: red; */
 }
 
-#menu-container{
+.menu-container{
     display: block;
     position: fixed;
     top: 25px;
@@ -14,7 +14,7 @@ body{
     font-family: 'Open Sans', sans-serif;
     font-weight: bold;
     transition: all 1,5s ease-in-out;
-    z-index:9999;
+    z-index:2147483646;
     
 }
 
@@ -31,17 +31,17 @@ body{
     cursor: pointer;
 }
 
-#menu-container:hover #menuOptions{
+.menu-container:hover #menuOptions{
     display:block;
 
 }
 
-#menu-container:hover #menu_icon{
+.menu-container:hover #menu_icon{
     border-radius: 25px 25px 0 0;
 
 }
 
-#menu-container:hover .title_desc{
+.menu-container:hover .title_desc{
     display: block;
     
 }
@@ -78,12 +78,12 @@ body{
     display: none;
 }
 
-#menu-container a{
+.menu-container a{
     color: white;
     text-decoration: none;
 }
 
-#menu-container a:hover{
+.menu-container a:hover{
     color: rgb(255, 251, 0);
     
 }

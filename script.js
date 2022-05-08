@@ -1,14 +1,42 @@
+// ==UserScript==
+// @name         ⚙vpGenius🎬
+// @namespace     https://github.com/Filszu/video_player_genius
+// @version      1.2
+// @description  Video speed changer and other useful video player tools
+// @description:pl  Skrypt umożliwiający przyspieszenie video do 16x i pobranie go.
+// @author       Filszu (https://github.com/Filszu)
+// @license      MIT
+// @match        http://*/*
+// @include      https://www.youtube.com/*
+// @include      *://*/**
+// @icon         https://ciac.me/logo.png
+// @resource     customCSS https://raw.githubusercontent.com/Filszu/video_player_genius/master/style.css
+// @grant       GM_addStyle
+// @grant       GM_getResourceText
+// ==/UserScript==
+
+// var newCSS = GM_getResourceText ("customCSS");
+// GM_addStyle (newCSS);
+
 console.log('%c------------⚙vpGenius------------', 'color: green; ');
 var body;
 var video_players;  
 //detected videoplayers
 let videos_no;
+let menu=null;
+let hiddenMenu=false;
 
 
 window.addEventListener("load", function(){
     body = document.querySelector("body");
     //FIND VIDEO
+    findVideo();
 
+ 
+    
+});
+
+function findVideo(){
     try{
 
         video_players=document.querySelectorAll('video');
@@ -22,17 +50,44 @@ window.addEventListener("load", function(){
            
             console.log('%c[⚙vpGenius]', 'color: green; ',`Video hasn't been founded`);
             console.log("to refresh, type 'setup()' in the console");
+            show_hiddenMenu();
+
         }
         else{
-            setup();
+            
+            if(menu==null){
+                setup();        
+            }
+
+            updateContent();
         }
     }catch(err){
         console.log('%c[⚙vpGenius]', 'color: green; ',`Video hasn't been founded`);
         console.log(err);
         
     }
-    
-})
+}
+
+
+
+function show_hiddenMenu(){//smal menu
+    const el = document.createElement("div");
+    const smallMenu = el;
+    smallMenu.innerHTML='<div class="menu-container" style="background-color: rgb(0, 181, 114, 0.75); border-radius: 5px; padding: 10px; cursor: pointer">🎬</div>';
+    body.append(smallMenu);
+
+    smallMenu.onclick=()=>{
+        smallMenu.style.display="none";
+        findVideo();
+    }
+}
+
+function hideMenu(){
+    menu.innerHTML="";
+    menu=null;
+    // menu.style.display="none";
+    show_hiddenMenu();
+}
 
 
 
@@ -41,18 +96,20 @@ window.addEventListener("load", function(){
 
 
 
-
-
-
-
+let menu_icon;
+let menu_options;
+let v_control;
+let v_info;
+let operations;
 function setup(){
     console.log('%c------------⚙vpGenius------------', 'color: green; ');
-    //PANEL
-    
+    //PANEL    
     const el = document.createElement("div");
-    const menu = el;
+    
+    menu = el;
+    // console.warn(typeof(menu));
     menu.innerHTML = `
-    <div id="menu-container">
+    <div class="menu-container">
         <div id="menu_icon">⚙vpGenius🎬
         <div class="title_desc">powered by: <a href="https://ciac.me">CIAC.me V-speeder</a></div>
         </div>
@@ -64,26 +121,31 @@ function setup(){
             min="0.1" max="16" value="1" step="0.1" style="width: 100%;">
 
             <div>🎬Detected: <span class="specialFont">${videos_no}</span> video-players</div>
+            
 
             
 
             <div class="controls">
+                <div onclick="findVideo()">⟳</div>
                 <div onclick="controls(1)">▶</div>
                 
                 <div onclick="controls(0)">II</div>
+                <div onclick="hideMenu()">⤒</div>
             </div>
 
             <div id="operations-con">
                 <div class="controls" ><div>open↗ </div> / <div> download⬇</div></div>
                 <div id="operations">videos: </div>
+                <div class="controls" onclick="hideMenu()"><div>⏏⏏⏏</div></div>
                 
                 
             </div>
             
             
+            
 
             
-            <!--⬜▶👣⬛💱🔄⏸⏺⏹-->
+            <!--⬜▶👣⬛💱🔄⏸⏺⏹🔁🔄 ⟲ ↺ ↻ ↩⤒ ⌫⏎⏏⏫⬆↕-->
 
 
 
@@ -99,17 +161,19 @@ function setup(){
         
    
 
-
+    
     body.append(menu);
+    
+    menu_icon = document.querySelector("#menu_icon");
+    menu_options = document.querySelector("#menuOptions");
+    v_control = document.querySelector('#speed_control');
+    v_info = document.querySelector('#v_speed_info');
+    operations = document.querySelector('#operations');
+    // updateContent();
+}
 
-    const menu_icon = document.querySelector("#menu_icon");
-    const menu_options = document.querySelector("#menuOptions");
-    const v_control = document.querySelector('#speed_control');
-    const v_info = document.querySelector('#v_speed_info');
-    const operations = document.querySelector('#operations');
-   
 
-
+function updateContent(){
 
 //change speed
 
@@ -147,7 +211,7 @@ function setup(){
         nContent+=`<div>
         video ${i}: 
      
-            <a href="${file_name}" target="blank" title="open: ${file_name}">open↗</a>`
+            <a href="${file_name}" target="blank" title="open: ${file_name}">open↗</a> </div>`
 
     }
         
@@ -162,6 +226,7 @@ function controls(action){
     switch (action){
         case 1:
             for(let i=0; i<videos_no; i++){
+                // console.log(video_players[i]);
                 video_players[i].play();
             }
             break;
