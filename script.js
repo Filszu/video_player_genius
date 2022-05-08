@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         ⚙vpGenius🎬
 // @namespace     https://github.com/Filszu/video_player_genius
-// @version      1.2
+// @version      1.2.2
 // @description  Video speed changer and other useful video player tools
 // @description:pl  Skrypt umożliwiający przyspieszenie video do 16x i pobranie go.
 // @author       Filszu (https://github.com/Filszu)
