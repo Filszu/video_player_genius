@@ -126,17 +126,17 @@ function setup(){
             
 
             <div class="controls">
-                <div onclick="findVideo()">⟳</div>
-                <div onclick="controls(1)">▶</div>
+                <div id="btn_findVideo">⟳</div>
+                <div id="btn_controls1">▶</div>
                 
-                <div onclick="controls(0)">II</div>
-                <div onclick="hideMenu()">⤒</div>
+                <div id="btn_controls2" >II</div>
+                <div id="btn_hideMenu">⤒</div>
             </div>
 
             <div id="operations-con">
                 <div class="controls" ><div>open↗ </div> / <div> download⬇</div></div>
                 <div id="operations">videos: </div>
-                <div class="controls" onclick="hideMenu()"><div>⏏⏏⏏</div></div>
+                <div class="controls" id="btn_hideMenu2"><div>⏏⏏⏏</div></div>
                 
                 
             </div>
@@ -169,6 +169,20 @@ function setup(){
     v_control = document.querySelector('#speed_control');
     v_info = document.querySelector('#v_speed_info');
     operations = document.querySelector('#operations');
+
+    //clicked methods
+    document.querySelector("#btn_findVideo").addEventListener('click',findVideo)
+    document.querySelector("#btn_controls1").addEventListener('click',()=>{controls(1)})
+    document.querySelector("#btn_controls2").addEventListener('click',()=>{controls(0)})
+    document.querySelector("#btn_hideMenu").addEventListener('click',hideMenu)
+    document.querySelector("#btn_hideMenu2").addEventListener('click',hideMenu)
+
+
+
+    // btn_hideMenu
+    // 
+    // btn_hideMenu2
+    // hideMenu()
     // updateContent();
 }
 
@@ -221,7 +235,6 @@ function updateContent(){
 }
 
 function controls(action){
-
         
     switch (action){
         case 1:
@@ -238,6 +251,7 @@ function controls(action){
     }
 
 }
+
 
 // ADD STYLES
     // Get HTML head element
