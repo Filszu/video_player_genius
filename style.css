@@ -14,7 +14,8 @@ body{
     font-family: 'Open Sans', sans-serif;
     font-weight: bold;
     transition: all 1,5s ease-in-out;
-    z-index:2147483646;
+    /* z-index:2147483646; */
+    z-index:999;
     
 }
 
