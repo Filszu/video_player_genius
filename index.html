@@ -1,35 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <script src="script.js"></script>
     <video width="320" height="240" controls>
-        <source src="https://www.w3schools.com/tags/movie.mp4" type="video/mp4">    
+        <source src="https://www.w3schools.com/tags/movie.mp4" type="video/mp4">
         Your browser does not support the video tag.
-      </video>
+    </video>
 
-      <video width="320" height="240" controls src="https://www.w3schools.com/tags/movie.mp4">
-       
-      </video>
+    <video width="320" height="240" controls src="https://www.w3schools.com/tags/movie.mp4">
 
-      <div id="testBox"></div>
+    </video>
 
-      
+    <div id="testBox"></div>
 
 
-      
 
-      <script>
-          window.setTimeout(()=>{
-                document.querySelector("#testBox").innerHTML = `<video width="320" height="240" controls src="https://www.w3schools.com/tags/movie.mp4">
+
+
+
+    <script>
+        window.setTimeout(() => {
+            document.querySelector("#testBox").innerHTML = `<video width="320" height="240" controls src="https://www.w3schools.com/tags/movie.mp4">
        `
-          },2000)
-      </script>
-    
+        }, 2000)
+    </script>
+
+
+
 </body>
+
 </html>

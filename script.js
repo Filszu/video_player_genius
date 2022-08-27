@@ -109,50 +109,56 @@ function setup(){
     menu = el;
     // console.warn(typeof(menu));
     menu.innerHTML = `
+    
     <div class="menu-container">
         <div id="menu_icon">⚙vpGenius🎬
-        <div class="title_desc">powered by: <a href="https://ciac.me">CIAC.me V-speeder</a></div>
+            <div class="title_desc">powered by: <a href="https://ciac.me">CIAC.me V-speeder</a></div>
         </div>
 
 
         <div id="menuOptions">
             ⏱video speed: <span id="v_speed_info">1</span>
-            <input type="range" id="speed_control" name="speed_control"" 
-            min="0.1" max="16" value="1" step="0.1" style="width: 100%;">
+            <input type="range" id="speed_control" name="speed_control" min=" 0.1" max="16" value="1" step="0.1"
+                style="width: 100%;">
 
             <div>🎬Detected: <span class="specialFont">${videos_no}</span> video-players</div>
-            
 
-            
+
+
 
             <div class="controls">
                 <div id="btn_findVideo">⟳</div>
                 <div id="btn_controls1">▶</div>
-                
-                <div id="btn_controls2" >II</div>
+
+                <div id="btn_controls2">II</div>
                 <div id="btn_hideMenu">⤒</div>
             </div>
 
             <div id="operations-con">
-                <div class="controls" ><div>open↗ </div> / <div> download⬇</div></div>
+                <div class="controls">
+                    <div>open↗ </div> / <div> download⬇</div>
+                </div>
                 <div id="operations">videos: </div>
-                <div class="controls" id="btn_hideMenu2"><div>⏏⏏⏏</div></div>
-                
-                
-            </div>
-            
-            
-            
+                <div class="controls" id="btn_hideMenu2">
+                    <div>⏏⏏⏏</div>
+                </div>
 
-            
+
+            </div>
+
+
+
+
+
             <!--⬜▶👣⬛💱🔄⏸⏺⏹🔁🔄 ⟲ ↺ ↻ ↩⤒ ⌫⏎⏏⏫⬆↕-->
 
 
 
-            
 
-        
+
+
         </div>
+    </div>
 
         
 
